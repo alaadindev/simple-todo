@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+header{
+    padding: 1em;
+    background-color: black;
+    color:white;
+    
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main section{
+    width: 70%;
+    height: 80vh;
+    padding: 1em;
+    background-color: azure;
+    box-shadow: 1px 1px 3px 3px gray;
+}
+main section main{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background-color: black;
+    color: aliceblue;
+}
+
+#input{
+    --color: green;
+    width: 70%;
+    font-size: 1.2em;
+    padding: 1em;
+    border: none;
+    outline: none;
+    background: conic-gradient(from 90deg at 3px 3px, #0000 90deg, var(--color) 0) 10px 10px / calc(100% - 20px) calc(100% - 20px);
+    transition: all ease 0.3s;
+}
+#input:hover{
+    background: conic-gradient(from 90deg at 3px 3px, #0000 90deg, var(--color) 0) 0px 0px / calc(100% - 3px) calc(100% - 3px); 
+}
+#input:focus{
+    --color: limegreen;
+}
+#add{
+    outline: none;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 1.2em;
+    padding: 1em;
+    background-color: white;
+    color: limegreen;
+    border: 3px solid limegreen;
+    border-radius: 10px;
+    box-shadow: 10px 5px 0px -3px white, 10px 5px blue, 20px 10px 0px -3px white, 20px 10px green, 30px 15px 0px -3px white, 30px 15px red;
+    transition: all ease 0.5s;
+}
+#add:hover{
+    background-color: limegreen;
+    color: white;
+    box-shadow: 0px 0px 0px -3px white, 0px 0px blue, 0px 0px 0px -3px white, 0px 0px green, 0px 0px 0px -3px white, 0px 0px red;
+}
