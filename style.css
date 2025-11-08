@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing:border-box;
 }
+html, body{
+    height: 100%;
+    overscroll-behavior: none;
+}
 
 header{
     padding: 1em;
@@ -12,7 +16,7 @@ header{
 }
 main{
     width: 70%;
-    height: 80vh;
+    min-height: 80vh;
     background-color: aliceblue;
     margin: auto;
 }
@@ -28,6 +32,7 @@ main section{
     align-items: center;
     flex-direction: column;
     gap: 5px;
+    overflow: hidden;
 }    
 footer{
     display: flex;
@@ -82,7 +87,7 @@ footer{
     background-color: red;
 }
 .task{
-    width: 50%;
+    width: 70%;
     margin: auto;
     margin-top: 10px;
     padding: 1em;
