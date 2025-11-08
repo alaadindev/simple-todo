@@ -99,7 +99,7 @@ footer{
     transition: all 0.4s;
 }
 .task:hover{
-   transform: perspective(1000px) rotateX(40deg);
+   transform: perspective(1000px) rotateY(40deg);
    background-color: white;
 }
 .task span{
@@ -107,7 +107,7 @@ footer{
 }
 @keyframes deleted {
     to {
-        transform: perspective(1000px) rotateX(180deg);
+        transform: perspective(1000px) rotateY(180deg);
     }
 }
 .grayed{
@@ -117,7 +117,7 @@ footer{
     background-color: lightgray;
 }
 .grayed:hover{
-   transform: perspective(1000px) rotateX(40deg);
+   transform: perspective(1000px) rotateY(40deg);
    background-color: lightgray;
 }
 .grayed span{

@@ -1,10 +1,18 @@
 let textfield = document.getElementById("input")
 let btn = document.getElementById("add")
 let tasksdiv = document.getElementById("tasks")
+let h1 = document.getElementById("h1")
 let tasks = []
 
 btn.addEventListener("click", addtask)
 textfield.addEventListener("keydown", usertyped)
+
+setInterval(async ()=>{   
+    h1.classList.remove("glitch")
+    void h1.offsetWidth;
+    await new Promise(resolve=> setTimeout(resolve, 20))
+    h1.classList.add("glitch")
+}, 3000)
 
 function addtask(){
     let text = textfield.value
