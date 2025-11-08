@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
+    box-sizing:border-box;
 }
 
 header{
@@ -11,24 +11,24 @@ header{
     
 }
 main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-main section{
     width: 70%;
     height: 80vh;
-    padding: 1em;
-    background-color: azure;
-    box-shadow: 1px 1px 3px 3px gray;
-}
-main section main{
-    display: flex;
-    width: 70%;
+    background-color: aliceblue;
     margin: auto;
+}
+main section{
+    padding: 3em;
+}
+.control{
+    display: flex;
+}
+.tasks{
+    display: flex;
     justify-content: center;
     align-items: center;
-}
+    flex-direction: column;
+    gap: 5px;
+}    
 footer{
     display: flex;
     justify-content: center;
@@ -71,4 +71,77 @@ footer{
     background-color: limegreen;
     color: white;
     box-shadow: 0px 0px 0px -3px white, 0px 0px blue, 0px 0px 0px -3px white, 0px 0px green, 0px 0px 0px -3px white, 0px 0px red;
+}
+.task{
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    padding: 1em;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px hsl(0 0 100% / 1), 
+    0px 0px 40px hsl(0 0 0 / 0.25);
+    
+    transition: all 0.4s;
+}
+.task:hover{
+   transform: perspective(1000px) rotateX(40deg);
+   background-color: white;
+}
+.task span{
+    font-size: 1.3em;
+}
+@keyframes deleted {
+    to {
+        transform: perspective(1000px) rotateX(180deg);
+    }
+}
+.grayed{
+    animation: deleted 0.5s;
+    box-shadow: inset 0px 0px hsl(0 0 100% / 1), 
+    0px 0px 10px hsl(0 0 0 / 0.25);
+    background-color: lightgray;
+}
+.grayed span{
+    text-decoration: line-through;
+}
+h1{
+    margin: 10px;
+    padding: 0.5em;
+    background-color: blue;
+    max-width: fit-content;
+    position: relative;
+    box-shadow: 4px 2px 0px cyan;
+}
+.glitch{
+    position: relative;
+}
+.glitch::after{
+    --clip0: inset(50% 50% 50% 50%);
+    --clip1: inset(70% -10px 0 0);
+    --clip2: inset(50% -10px 35% 0);
+    --clip3: inset(15% -10px 85% 0);
+    --clip4: inset(40% -10px 45% 0);
+    --clip5: inset(80% -10px 10% 0);
+    display: block;
+    content: "hacking";
+    text-shadow: -3px -3px 0px lightcoral, 3px 3px 0px blueviolet;
+    position: absolute;
+    top:0; bottom:0; left:0; right:0;
+    background-color: blue;
+    clip-path: var(--clip0);
+    animation: glitch 1s steps(2, end);
+}
+@keyframes glitch {
+    0% { clip-path: var(--clip1); transform: translate(-20px, -15px);}
+    10% { clip-path: var(--clip4); transform: translate(10px, 5px);}
+    20% { clip-path: var(--clip1); transform: translate(10px, -10px);}
+    30% { clip-path: var(--clip3); transform: translate(10px, 5px);}
+    40% { clip-path: var(--clip2); transform: translate(5px, 0px);}
+    50% { clip-path: var(--clip3); transform: translate(-5px, 0px);}
+    60% { clip-path: var(--clip4); transform: translate(-15px, 5px);}
+    70% { clip-path: var(--clip2); transform: translate(10px, -10px);}
+    80% { clip-path: var(--clip5); transform: translate(-20x, 10px);}
+    90% { clip-path: var(--clip1); transform: translate(10px, 0);}
+    100% { clip-path: inset(--clip0); transform: translate(0, 0);}
 }
