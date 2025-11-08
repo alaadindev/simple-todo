@@ -72,6 +72,15 @@ footer{
     color: white;
     box-shadow: 0px 0px 0px -3px white, 0px 0px blue, 0px 0px 0px -3px white, 0px 0px green, 0px 0px 0px -3px white, 0px 0px red;
 }
+#input.red, #add.red{
+    --color:red;
+    color: red; 
+    border-color: red;
+}
+#add.red:hover{
+    color: white;
+    background-color: red;
+}
 .task{
     width: 50%;
     margin: auto;

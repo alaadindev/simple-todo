@@ -25,12 +25,18 @@ function addtask(){
 function deletetask(e){
     e.currentTarget.classList.add("grayed")
 }
-function usertyped(){
+function usertyped(e){
+    let value = textfield.value + e.key
     if (e.key == "Enter"){
         btn.click()
         return
     }
-    if (tasks.includes(textfield.value)){
-        
+    if (tasks.includes(value)){
+        textfield.classList.add("red")
+        btn.classList.add("red")
+    }else{
+       textfield.classList.remove("red")
+        btn.classList.remove("red") 
     }
+    console.log(e.key, value)
 }
