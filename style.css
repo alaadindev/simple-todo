@@ -81,22 +81,22 @@ main section{
 #add::before{
     content: "";
     position: absolute;
-    top: 31px;
-    left: -30px;
-    height: 110%;
-    width: 35%;
-    background-color: var(--btn-bg-color);
+    top: 47%;
+    left: calc(-1* 34%);
+    height: 100%;
+    width: 34%;
+    background-color: color-mix(in hsl, var(--btn-bg-color), black 10%);
     transform: skewY(-65deg) translateZ(0px);
 }
 
 #add::after{
     content: "";
     position: absolute;
-    bottom:-100%;
-    right: 16px;
-    height: 100%;
+    bottom:-90%;
+    right: 18%;
+    height: 90%;
     width: 100%;
-    background-color: var(--btn-bg-color);
+    background-color: color-mix(in hsl, var(--btn-bg-color), black 30%);
     transform: skewY(0deg) skewX(-25deg);
 }
 
