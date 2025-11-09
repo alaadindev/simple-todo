@@ -6,19 +6,23 @@
 html, body{
     height: 100%;
     overscroll-behavior: none;
+    background-color: hsl(0, 0%, 90%, 1);
 }
 
 header{
     padding: 1em;
-    background-color: black;
     color:white;
-    
+    justify-content: center;
+}
+header h1{
+    margin: auto;
 }
 main{
     width: 70%;
-    min-height: 80vh;
-    background-color: aliceblue;
-    margin: auto;
+    background-image: linear-gradient(to bottom left, hsl(182, 100%, 30%, 0.1), hsl(182, 100%, 70%, 0.1));
+    margin: 10em;
+    box-shadow: -20px 20px 40px hsl(0, 100%, 0%, 0.7), inset -2px 2px white;
+    border-radius: 20px;
 }
 main section{
     padding: 3em;
@@ -33,49 +37,74 @@ main section{
     flex-direction: column;
     gap: 5px;
     overflow: hidden;
-}    
-footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-    background-color: black;
-    color: aliceblue;
-}
+}   
 
 #input{
     --color: green;
+    --bg-color: hsl(182, 100%, 30%, 0.1);
+    box-shadow: inset 0 0 20px 0px lightgray;
     width: 70%;
     font-size: 1.2em;
     padding: 1em;
     border: none;
-    outline: none;
-    background: conic-gradient(from 90deg at 3px 3px, #0000 90deg, var(--color) 0) 10px 10px / calc(100% - 20px) calc(100% - 20px);
+    outline: 3px solid transparent;
+    outline-offset: 0.3em;
+    background: conic-gradient(from 90deg at 3px 3px, var(--bg-color) 90deg, var(--color) 0) 10px 10px / calc(100% - 20px) calc(100% - 20px);
     transition: all ease 0.3s;
 }
 #input:hover{
-    background: conic-gradient(from 90deg at 3px 3px, #0000 90deg, var(--color) 0) 0px 0px / calc(100% - 3px) calc(100% - 3px); 
+    background: conic-gradient(from 90deg at 3px 3px, var(--bg-color) 90deg, var(--color) 0) 0px 0px / calc(100% - 3px) calc(100% - 3px); 
+    outline-offset: 0;
+    outline-color: var(--color);
 }
 #input:focus{
-    --color: limegreen;
+    box-shadow: inset 0 0 40px 0px cyan;
 }
 #add{
+    position: relative;
+    --btn-bg-color: hsl(184, 49%, 66%);
+    --btn-color: hsl(120, 37%, 36%);
     outline: none;
     cursor: pointer;
     margin-left: auto;
-    font-size: 1.2em;
+    font-size: 1.4em;
     padding: 1em;
-    background-color: white;
-    color: limegreen;
-    border: 3px solid limegreen;
-    border-radius: 10px;
-    box-shadow: 10px 5px 0px -3px white, 10px 5px blue, 20px 10px 0px -3px white, 20px 10px green, 30px 15px 0px -3px white, 30px 15px red;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-color);
+    border: none;     
+    transform: rotateX(60deg) rotateY(0deg) rotateZ(336deg) 
+        translateZ(0px);
+    transform-style: preserve-3d;
+    box-shadow: -30px 70px 20px black;
     transition: all ease 0.5s;
 }
+#add::before{
+    content: "";
+    position: absolute;
+    top: 31px;
+    left: -30px;
+    height: 110%;
+    width: 35%;
+    background-color: var(--btn-bg-color);
+    transform: skewY(-65deg) translateZ(0px);
+}
+
+#add::after{
+    content: "";
+    position: absolute;
+    bottom:-100%;
+    right: 16px;
+    height: 100%;
+    width: 100%;
+    background-color: var(--btn-bg-color);
+    transform: skewY(0deg) skewX(-25deg);
+}
+
 #add:hover{
-    background-color: limegreen;
     color: white;
-    box-shadow: 0px 0px 0px -3px white, 0px 0px blue, 0px 0px 0px -3px white, 0px 0px green, 0px 0px 0px -3px white, 0px 0px red;
+    transform: rotateX(60deg) rotateY(0deg) rotateZ(336deg) 
+        translateZ(20px);
+    box-shadow: -40px 100px 50px 3px black;
 }
 #input.red, #add.red{
     --color:red;
@@ -83,18 +112,16 @@ footer{
     border-color: red;
 }
 #add.red:hover{
-    color: white;
-    background-color: red;
+    color: red;
 }
 .task{
     width: 70%;
     margin: auto;
     margin-top: 10px;
     padding: 1em;
-    background-color: white;
     border-radius: 10px;
-    box-shadow: inset 0px 0px hsl(0 0 100% / 1), 
-    0px 0px 40px hsl(0 0 0 / 0.25);
+    box-shadow: inset -1px 1px hsl(0, 100%, 100%, 1), 
+    -10px 20px 40px hsl(0, 0%, 0%, 0.3);
     
     transition: all 0.4s;
 }
@@ -112,8 +139,8 @@ footer{
 }
 .grayed{
     animation: deleted 0.5s;
-    box-shadow: inset 0px 0px hsl(0 0 100% / 1), 
-    0px 0px 10px hsl(0 0 0 / 0.25);
+    box-shadow: inset -1px 1px hsl(0, 100%, 100%, 1), 
+    -10px 20px 40px hsl(0, 0%, 0%, 0.3); 
     background-color: lightgray;
 }
 .grayed:hover{
@@ -124,12 +151,14 @@ footer{
     text-decoration: line-through;
 }
 h1{
+    --h1-bg-color: hsl(0, 0%, 75%, 1);
+    --neon: hsl(180, 100%, 60%, 1);
     margin: 10px;
     padding: 0.5em;
-    background-color: blue;
+    background-color: var(--h1-bg-color);
     max-width: fit-content;
     position: relative;
-    box-shadow: 4px 2px 0px cyan;
+    box-shadow: 4px 2px 0px var(--neon), 0px 0px 20px white, 0px 20px 30px var(--neon);
 }
 .glitch{
     position: relative;
@@ -142,11 +171,11 @@ h1{
     --clip4: inset(40% -10px 45% 0);
     --clip5: inset(80% -10px 10% 0);
     display: block;
-    content: "hacking";
-    text-shadow: -3px -3px 0px lightcoral, 3px 3px 0px blueviolet;
+    content: "redacted";
+    text-shadow: -3px -3px 0px rgb(255, 175, 64), 3px 3px 0px rgb(130, 8, 245);
     position: absolute;
     top:0; bottom:0; left:0; right:0;
-    background-color: blue;
+    background-color: var(--h1-bg-color);
     clip-path: var(--clip0);
     animation: glitch 1s steps(2, end);
 }
