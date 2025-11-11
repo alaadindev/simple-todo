@@ -151,6 +151,19 @@ main section{
 .grayed span{
     text-decoration: line-through;
 }
+.completed{
+    transform: perspective(1000px) rotateY(180deg);
+    box-shadow: inset -1px 1px hsl(0, 100%, 100%, 1), 
+    -10px 20px 40px hsl(0, 0%, 0%, 0.3); 
+    background-color: lightgray;
+}
+.completed:hover{
+   transform: perspective(1000px) rotateY(40deg);
+   background-color: lightgray;
+}
+.completed span{
+    text-decoration: line-through;
+}
 h1{
     --h1-bg-color: hsl(0, 0%, 75%, 1);
     --neon: hsl(180, 100%, 60%, 1);
