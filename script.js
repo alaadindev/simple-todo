@@ -21,15 +21,18 @@ function addtask(){
     }
     
     textfield.value = ""
-    tasks.push(text)
-    console.log(text)
+    insert_into_db(text)
+    read_from_db()
+}
+function add_task_dom(value){
+    tasks.push(value)
     let task = document.createElement("section")
     let span = document.createElement("span")
-    span.textContent = text
+    span.textContent = value
     task.appendChild(span)
     task.className = "task"
     task.addEventListener("click", deletetask)
-    tasksdiv.appendChild(task)
+    tasksdiv.appendChild(task) 
 }
 function deletetask(e){
     e.currentTarget.classList.add("grayed")
@@ -47,24 +50,43 @@ function usertyped(e){
        textfield.classList.remove("red")
         btn.classList.remove("red") 
     }
-    console.log(e.key, value)
 }
 
 function insert_into_db(task){
     const form = new FormData();
     form.append('task', task);
 
-    fetch('add.php', {
+    fetch('http://localhost:8000/backend/add.php', {
         method: 'POST',
         body: form
     })
     .then(res => res.json())
     .then(data =>{
         if (data.error_msg != ''){
-            return
+            console.log(data.error_msg);
+            return;
         }
     })
     .catch(err=>{
         console.log(err);
     });
 }
+
+function read_from_db(){
+    fetch('http://localhost:8000/backend/get.php', {
+        method: 'GET'
+    })
+    .then(res => res.json())
+    .then(tasks=>{
+            
+            clear_tasks_dom()
+            tasks.forEach(task => {
+                add_task_dom(task.task)
+            });
+    })
+    .catch(err=>console.log(err))
+}
+function clear_tasks_dom(){
+    tasksdiv.innerHTML = ""
+}
+read_from_db()
