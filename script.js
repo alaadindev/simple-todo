@@ -19,8 +19,9 @@ function addtask(){
     if (tasks.includes(text) || text == ""){
         return
     }
-    tasks.push(text)
+    
     textfield.value = ""
+    tasks.push(text)
     console.log(text)
     let task = document.createElement("section")
     let span = document.createElement("span")
@@ -47,4 +48,23 @@ function usertyped(e){
         btn.classList.remove("red") 
     }
     console.log(e.key, value)
+}
+
+function insert_into_db(task){
+    const form = new FormData();
+    form.append('task', task);
+
+    fetch('add.php', {
+        method: 'POST',
+        body: form
+    })
+    .then(res => res.json())
+    .then(data =>{
+        if (data.error_msg != ''){
+            return
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+    });
 }
